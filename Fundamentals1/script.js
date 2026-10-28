@@ -47,10 +47,10 @@ console.log(myName)
 
 // LET, CONST, VAR
 // 'let' is used for variables that are intented to be reassigned, or mutated.
-let dateOfBirth = 2007;
-console.log(dateOfBirth)
-dateOfBirth = 2006;
-console.log(dateOfBirth)
+let birthYear = 2007;
+console.log(birthYear)
+birthYear = 2006;
+console.log(birthYear)
 
 // 'const' is used when declaring variables that are not supposed to change. 
 // variables declared with const cannot be reassigned. It is best practice to use const when writing code, except you intend to change it.
@@ -84,3 +84,130 @@ const BMIJohn = massJohn/(heightJohn ** 2);
 const markHigherBMI = BMIMark > BMIJohn;
 
 console.log(BMIMark, BMIJohn, markHigherBMI);
+
+// TEMPLATE LITERALS
+// They make it easy to concatenate strings together more naturally. Instead of having
+
+const firstName = "Lafen"
+const yearOfBirth = 2007
+const currentYear = 2026
+const job = 'student'
+const Louisa = "I'm " + firstName + " a " + (currentYear - yearOfBirth) + "year old " + job // It is important to use the double quotes when using single quotes inside text.
+console.log(Louisa)
+
+// We could use a template literal (use backticks, $, and {})
+const louisaNew = `I'm ${firstName}, a ${currentYear - yearOfBirth}year old ${job}`
+console.log(louisaNew)
+// Also its easier using backticks because then you dont have to worry about the type of quotes to use and how to insert variables.
+// backticks are also useful for multiple line strings as seen bellow
+// instead of having...
+console.log("multiple \n  line \n strings")
+// we could have...
+console.log(`multiple
+    line
+    strings`)
+
+// CONTROL STRUCTURES
+// IF and IF/ ELSE STATEMENTS
+// they are conditional statements and function just as they sound. 
+// variables declared inside the if statement cannot be printed outside the if statement.
+// for example, checking the century one was born in
+
+const yearBirth = 2012
+let century // declaring an undefined variable using let, because i plan to reassign it
+if (yearBirth < 2000){
+    century = 20
+}
+else{
+    century = 21
+}
+console.log(century)
+
+// Data type Conversion and Coercion
+// Data type conversion is when we manually convert from one data tyoe to another.
+const inputYear = "1990"
+console.log(Number(inputYear) + 18) // we use the 'Number' method to convert to a number. 
+console.log(typeof(inputYear)) //It does not change the variable completely, it just does the change during the mathematical operation
+// converting a string to a number will return 'Not a Number' (NaN). NaN has a datatype of 'Number'.
+
+// Data type coercion is when JS autmatically converts from one type to another behind the scenes.
+const inputText = "I am " + 19 + " years old"
+console.log(inputText, "(" ,typeof(inputText), ")") // It shows that inputText is a string although it has the number 19 which is not.
+// the '-' sign converts strings that are numbers to actual numbers that can be manipulated mathematically
+// the '+' sign converts actual numbers to strings.
+const n = "2" + "7" + 8 // prints '278' as a string
+console.log(n - 100) // will return 178. Because it has converted the result of n from a string to a number and performed subtraction on it
+// There can only be 3 conversions, i.e to String, Number and Boolean
+
+// FALSY and TRUTHY VALUES
+// Falsy values are values that are not false but will be if tried to be converted to boolean.
+// there are only 5 of them, i.e, 0, undefined, null, NaN and ''
+// every other value is a truthy value, for example
+
+const money = 0
+if(money){
+    console.log("Don't spend it all")
+}
+else{
+    console.log("Get a job")
+} // data type coercion occurs and converts 0 to false hence the else statement will be printed. It will be same for the other falsy values.
+
+
+// EQUALITY OPERATORS == and ===
+// == checks for exactness and does type coercion but === checks only for exactness, i.e it is strict
+const favourite = prompt("What is your favourite number")
+if(favourite == 23) console.log("Very nice number")// the output is converted to a string and compared
+if(favourite === 23) console.log("it is a good number") // this line is not executed because the output of the prompt is a string and '23' is not the same as 23 
+// there also is != and !== 
+// != checks does type coercion and checks for not equal to, while !== checks for exactly not equal to
+
+// BOOLEAN LOGIC
+// AND (&&) is true only when all statements are true
+// OR (||) is false only when all statements are false
+// NOT (!) inverts the result of a statemnt
+
+const scoreDolphins = (96 + 108 + 89)/3
+const scoreKoalas = (88 + 91 + 110)/3 
+
+if(scoreDolphins > scoreKoalas && scoreDolphins >= 100){
+    console.log("Dolphins win the trophy")
+} else if (scoreDolphins === scoreKoalas){
+    console.log("Both win the trophy")
+}else if(scoreKoalas > scoreDolphins && scoreKoalas >= 100){
+    console.log("Koalas win the trophy")
+}
+// no value is printed because although the average of scoreDolphins is greater than that of scoreKoalas, it is not greater than 100 and && is true only when both are true 
+
+
+// An expression is a piece of code that produces a value while a statement does not produce a value
+
+// Tenary conditions use '?' to show the result of a condition and ':' to show the alternative result (else) if it does not satisfy the condition
+const age = 19
+const preference = age >= 18 ? "wine" : "water" // it just functions like an if/ else statement
+// because it is not a statement but an expression, it can be used in a literal
+console.log(`Can I please have some ${preference}`) // it prints wine because my age is greater than 18
+
+// SWITCH STATEMENTS 
+// they are a bit similar to if statements but they do not compare. Instead they check for exactness and have a different format
+
+const day = 1
+switch (day){
+    case 1: console.log("Monday")
+       break
+    case 2: console.log("Tuesday")
+       break
+    default: console.log("No day")      
+}
+
+//EXERCISE 
+const bill = 275;
+
+/* Write your code below. Good luck! 🙂 */
+
+const tip = bill > 50 && bill < 300 ? (15/100)*bill : (20/100)*bill
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`)
+
+// Because recent versions of JS will not work on older browser versions, It is recommended to carry out transfiling 
+// this is the process of converting to ES5. this can be done using a tool called Babel
+
+// This is the end of this section. More detailed information can be seen in the PDF in this folder
