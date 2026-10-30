@@ -188,7 +188,7 @@ const preference = age >= 18 ? "wine" : "water" // it just functions like an if/
 console.log(`Can I please have some ${preference}`) // it prints wine because my age is greater than 18
 
 // SWITCH STATEMENTS 
-// they are a bit similar to if statements but they do not compare. Instead they check for exactness and have a different format
+// they are a bit similar to if statements but they do not compare multiplr values. Instead they compare only a single value to multiple results and have a different format
 
 const day = 1
 switch (day){
@@ -198,6 +198,7 @@ switch (day){
        break
     default: console.log("No day")      
 }
+// the 'break' stops the execution of the switch statement and exits the block
 
 //EXERCISE 
 const bill = 275;
