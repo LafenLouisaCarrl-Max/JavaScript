@@ -196,6 +196,44 @@ for(let i = 0; i <= 10; i++){
     console.log(`lifting weights repetition ${i}`)
 }
 
+// EXERCISE
+// Using loops to loop through an array
+const calculateTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+}
+
+/* Write your code below. Good luck! 🙂 */
+
+const Bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52]
+const Tips = []
+const Totals = []
+
+for (let i = 0; i < Bills.length; i++){
+    let tip = calculateTip(Bills[i])
+    Tips.push(tip)
+    
+    let total = Bills[i] + Tips[i]
+    Totals.push(total)
+    
+}
+
+console.log(Tips)
+console.log(Totals)
+
+// using loops to create a function
+let temp = 0
+const calculateAve = function(array){
+    for(let i = 0; i < array.length; i++){
+        temp = temp + array[i]
+    }
+    
+    const average = temp/ array.length
+    return average
+}
+
+console.log(calculateAve(Bills))
+console.log(calculateAve(Tips))
+console.log(calculateAve(Totals))
 
 
 
