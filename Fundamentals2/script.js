@@ -189,6 +189,14 @@ if (mark.bmi > john.bmi){
 }
 
 
+// LOOPS: ensures repetition with minimal code.
+// FOR Loop: runs while the condition is true 
+// Format: first you initialize a variable, then give it a condition and can either increment or decrement it
+for(let i = 0; i <= 10; i++){
+    console.log(`lifting weights repetition ${i}`)
+}
+
+
 
 
 
