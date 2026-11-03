@@ -236,5 +236,25 @@ console.log(calculateAve(Tips))
 console.log(calculateAve(Totals))
 
 
+// WHILE Loop
+// the while loop is mostly used when the number of iterations is unknown. it also has a slightly different format from the for loop
+
+let y = 1
+while (y < 8){
+    console.log(`Today is the number ${y} day of the week`)
+    y++
+}
+
+// A situation where we dont know how many times to loop 
+
+let dice = Math.trunc(Math.random() * 6) + 1
+
+while (dice !== 6){
+    console.log(`You rolled a ${dice}`)
+    dice = Math.trunc(Math.random() * 6) + 1
+    if(dice ===6) console.log("The loop is about to end")
+}
+
+
 
 
