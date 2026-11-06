@@ -67,3 +67,8 @@ const t1 = [1, 2, 3, 5, 'error']
 const t2 = [7, 8, 9, 10, 1]
 const amplitudeNew = calcAmplitudeNew(t1, t2)
 console.log(`the magnitude of this new temperature readings is: ${amplitudeNew}`)
+
+
+// Debugging is the act of finding and fixing errors in a code
+// a bug is an error or defect in a computer programm
+
