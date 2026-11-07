@@ -72,3 +72,23 @@ console.log(`the magnitude of this new temperature readings is: ${amplitudeNew}`
 // Debugging is the act of finding and fixing errors in a code
 // a bug is an error or defect in a computer programm
 
+
+// Exercise
+// Given an array of temperatures [1, 2, 3] create a function that prints out this sentence '...1degree celsius in 1 days ...2degree celsius in 2 days ...3degree celsius in 3 days' when the array is passed through it 
+
+function printForcast(array){
+    const result = []
+    for(let i = 0; i < array.length; i++){
+        const sentence = `...${array[i]}degree celsius in ${i + 1} days`
+        result.push(sentence)
+    }
+    console.log(result.join(" ")) // join prints out everything in tthe array on thesame line and '" "' passed insine the join function is what separates what is in the array
+}
+
+const temp1 = [17, 21, 23]
+const temp2 = [12, 5, -5, 0, 4]
+const answer1 = printForcast(temp1)
+const answer2 = printForcast(temp2)
+console.log(answer1)
+console.log(answer2)
+
