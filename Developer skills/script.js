@@ -92,3 +92,38 @@ const answer2 = printForcast(temp2)
 console.log(answer1)
 console.log(answer2)
 
+
+// Exercise 2
+
+function Report(array){
+    const totalHours = 0
+    const maxHour = array[0]
+    const daysWorked = 0
+    
+    for (let i = 0; i < array.length; i++){
+        totalHours = totalHours + array[i]
+        // if (array[i] > maxHour){
+        //     maxHour = i + 1
+        // }
+        // if (array[i] == '0'){
+        //     continue
+        // }else{
+        //     daysWorked = daysWorked + i + 1
+        // } 
+    }
+    const average = totalHours/ array.length
+
+    // let conclusion 
+    // if(totalHours >= 35){
+    //      conclusion = "It was a full-time week because total number of hours for the week are 35hrs or above"
+    // }else{
+    //      conclusion = "It was not a full-time week because total number of hours for the week are less than 35hrs"
+    // }
+
+    console.log(`You worked a total of ${totalHours}hours with an average of ${average} this week.`)
+
+}
+
+const hour1 = [7.5, 8, 6.5, 0, 8.5, 4, 0]
+const ans1 = Report(hour1)
+console.log(ans1)
