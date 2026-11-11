@@ -52,3 +52,5 @@ document.querySelector('.check').addEventListener('click',
         }
     }
 )
+
+// A continuation of using the DOM to include the functionality of the guess my number site
