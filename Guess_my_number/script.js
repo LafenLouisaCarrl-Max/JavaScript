@@ -15,11 +15,11 @@ document.querySelector('.highscore').textContent = 25
 document.querySelector('.guess').value = 25 //value instead of textcontent because it is an input element.
 */
 
-const secretNumber = Math.trunc(Math.random() * 20) + 1
+let secretNumber = Math.trunc(Math.random() * 20) + 1
 let score = 20
 
 document.querySelector('.score').textContent = score
-document.querySelector('.number').textContent = secretNumber
+
 
 document.querySelector('.check').addEventListener('click', 
     function () {
@@ -30,6 +30,13 @@ document.querySelector('.check').addEventListener('click',
            document.querySelector('.message').textContent = 'No number!' 
         }else if (secretNumber === guess){
             document.querySelector('.message').textContent = '✅ Correct Number!'
+            document.querySelector('.number').textContent = secretNumber
+
+            // Manipulating CSS in the DOM
+            // attributes with two words will now use the camel casing notation
+            // the value assigned is always a string and should be in quotes even if it is a number
+            document.querySelector('body').style.backgroundColor = '#60b347'
+            document.querySelector('.number').style.width = '30rem'
         }else if ( guess > secretNumber ){
              if (score > 1){
                 document.querySelector('.message').textContent = '📈 too high!'
@@ -54,3 +61,16 @@ document.querySelector('.check').addEventListener('click',
 )
 
 // A continuation of using the DOM to include the functionality of the guess my number site
+
+document.querySelector('.again').addEventListener('click', 
+    function (){
+        secretNumber = Math.trunc(Math.random() * 20) + 1
+        score = 20
+        document.querySelector('body').style.backgroundColor = ''
+        document.querySelector('.number').style.width = '15rem'
+        document.querySelector('.message').textContent = 'Start guessing...'
+        document.querySelector('.score').textContent = score
+        document.querySelector('.guess').value = ' '
+        document.querySelector('.number').textContent = '?'
+    }
+)
