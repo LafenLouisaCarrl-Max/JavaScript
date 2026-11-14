@@ -15,23 +15,38 @@ document.querySelector('.highscore').textContent = 25
 document.querySelector('.guess').value = 25 //value instead of textcontent because it is an input element.
 */
 
+const displayMessage = function(message){
+    document.querySelector('.message').textContent = message
+}
+const displayScore = function(score){
+    document.querySelector('.score').textContent = score
+}
+const displayNumber = function(number){
+    document.querySelector('.number').textContent = number
+}
+
 let secretNumber = Math.trunc(Math.random() * 20) + 1
 let score = 20
 let highscore = 0
+let target = 20
 
-document.querySelector('.score').textContent = score
+// displayScore(score)
+displayScore(score)
 
 
 document.querySelector('.check').addEventListener('click', 
     function () {
         const guess = Number(document.querySelector('.guess').value)
         console.log(guess)
-
         if (!guess){
-           document.querySelector('.message').textContent = 'No number!' 
+           displayMessage('No number!') 
+        }else if(guess > target || guess < 0){
+            displayMessage('Guess a whole number between 1 and 20 inclusively')
+            score--
+            displayScore(score)
         }else if (secretNumber === guess){
-            document.querySelector('.message').textContent = '✅ Correct Number!'
-            document.querySelector('.number').textContent = secretNumber
+            displayMessage('✅ Correct Number!')
+            displayNumber(secretNumber)
 
             // Manipulating CSS in the DOM
             // attributes with two words will now use the camel casing notation
@@ -46,18 +61,18 @@ document.querySelector('.check').addEventListener('click',
             
         }else if (guess !== secretNumber){
             if (score > 1){
-                document.querySelector('.message').textContent = guess > secretNumber ? '📈 too high!' : '📈 too high!' 
+                document.querySelector('.message').textContent = guess > secretNumber ? '📈 too high!' : '📈 too low!' 
                 score--
-                document.querySelector('.score').textContent = score
+                displayScore(score)
             }else {
-                document.querySelector('.message').textContent = '🤦🏽‍♀️You lost the game!'
-                document.querySelector('.score').textContent = 0
-            }  
+                displayMessage('🤦🏽‍♀️You lost the game!')
+                displayScore(0)
+            }      
         }/*else if ( guess > secretNumber ){
              if (score > 1){
                 document.querySelector('.message').textContent = '📈 too high!'
                 score--
-                document.querySelector('.score').textContent = score
+                displayScore(score)
             }else {
                 document.querySelector('.message').textContent = '🤦🏽‍♀️You lost the game!'
                 document.querySelector('.score').textContent = 0
@@ -66,13 +81,13 @@ document.querySelector('.check').addEventListener('click',
             if (score > 0){
                 document.querySelector('.message').textContent = '📉 too low!'
                 score--
-                document.querySelector('.score').textContent = score
+                displayScore(score)
             }else {
                 document.querySelector('.message').textContent = '🤦🏽‍♀️You lost the game!'
                 document.querySelector('.score').textContent = 0
             } 
             
-        }*/
+        }*/ // Taking away this section of the code and replacing it with a single if statement and the use of a tenary operator
     }
 )
 
@@ -84,9 +99,9 @@ document.querySelector('.again').addEventListener('click',
         score = 20
         document.querySelector('body').style.backgroundColor = '#222'
         document.querySelector('.number').style.width = '15rem'
-        document.querySelector('.message').textContent = 'Start guessing...'
-        document.querySelector('.score').textContent = score
+        displayMessage('Start guessing...')
+        displayScore(score)
         document.querySelector('.guess').value = ' '
-        document.querySelector('.number').textContent = '?'
+        displayNumber('?')
     }
 )
