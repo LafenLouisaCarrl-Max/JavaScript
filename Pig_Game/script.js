@@ -19,6 +19,7 @@ diceEl.classList.add('hidden')
 const scores = [0, 0]
 let currentScore = 0
 let activePlayer = 0
+let playing = true
 
 const switchPlayer = function(){
     document.getElementById(`current--${activePlayer}`).textContent = 0
@@ -31,7 +32,8 @@ const switchPlayer = function(){
 
 // Rolling the dice
 btnRoll.addEventListener('click', function(){
-    // Generate random dice roll
+    if (playing){
+        // Generate random dice roll
     const dice = Math.trunc(Math.random() * 6) + 1
     // console.log(dice)
 
@@ -46,12 +48,29 @@ btnRoll.addEventListener('click', function(){
     }else{
         switchPlayer()
     }
+ }
+    
 })
 
 btnHold.addEventListener('click', function(){
-    scores[activePlayer] += currentScore
-    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer]
-    switchPlayer()
+    if (playing){
+        scores[activePlayer] += currentScore
+        document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer]
+        // switchPlayer()
 
-    // find a winner once the score is >= 100
+        // find a winner once the score is >= 100
+       if (scores[activePlayer] >= 20){
+           playing = false
+           document.querySelector(`.player--${activePlayer}`).classList.add('player--winner')
+           document.querySelector(`.player--${activePlayer}`).classList.remove('player--active')
+           diceEl.classList.add('hidden')
+       }else{
+           switchPlayer()
+       }
+    }
+    
+})
+
+btnNew.addEventListener('click', function(){
+    
 })
