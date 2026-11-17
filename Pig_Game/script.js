@@ -16,7 +16,7 @@ score0El.textContent = 0
 score1El.textContent = 0
 diceEl.classList.add('hidden')
 
-const scores = [0, 0]
+let scores = [0, 0]
 let currentScore = 0
 let activePlayer = 0
 let playing = true
@@ -34,20 +34,20 @@ const switchPlayer = function(){
 btnRoll.addEventListener('click', function(){
     if (playing){
         // Generate random dice roll
-    const dice = Math.trunc(Math.random() * 6) + 1
-    // console.log(dice)
+        const dice = Math.trunc(Math.random() * 6) + 1
+        // console.log(dice)
 
-    // Display dice
-    diceEl.classList.remove('hidden')
-    diceEl.src = `./images/dice-${dice}.png`
+        // Display dice
+        diceEl.classList.remove('hidden')
+        diceEl.src = `./images/dice-${dice}.png`
 
-    // Add dice to current score
-    if(dice !== 1){
-        currentScore += dice
-        document.getElementById(`current--${activePlayer}`).textContent = currentScore
-    }else{
-        switchPlayer()
-    }
+        // Add dice to current score
+        if(dice !== 1){
+            currentScore += dice
+            document.getElementById(`current--${activePlayer}`).textContent = currentScore
+        }else{
+            switchPlayer()
+        }
  }
     
 })
@@ -72,5 +72,17 @@ btnHold.addEventListener('click', function(){
 })
 
 btnNew.addEventListener('click', function(){
-    
+    currentScore = 0
+    scores = [0, 0]
+    activePlayer = 0
+    score0El.textContent = 0
+    score1El.textContent = 0
+    current0El.textContent = 0
+    current1El.textContent = 0
+    diceEl.classList.add('hidden')
+    player0.classList.remove('player--winner')
+    player1.classList.remove('player--winner')
+    player0.classList.add('player--active')
+    player1.classList.remove('player--active')
+    playing = true
 })
