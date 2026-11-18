@@ -7,26 +7,29 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: clamp(50%, 0.625vw + 48%, 62.5%);
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100svh;
   color: #333;
   background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: clamp(1rem, 3vw, 2rem);
 }
 
 /* LAYOUT */
 main {
   position: relative;
-  width: 100rem;
-  height: 60rem;
+  width: min(100rem, 100%);
+  height: min(60rem, calc(100vh - 4rem));
+  height: min(60rem, calc(100svh - 4rem));
   background-color: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(200px);
   filter: blur();
@@ -37,8 +40,9 @@ main {
 }
 
 .player {
-  flex: 50%;
-  padding: 9rem;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: clamp(1rem, 5vw, 9rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,16 +52,17 @@ main {
 /* ELEMENTS */
 .name {
   position: relative;
-  font-size: 4rem;
+  font-size: clamp(1.4rem, 4vw, 4rem);
   text-transform: uppercase;
   letter-spacing: 1px;
   word-spacing: 2px;
   font-weight: 300;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .score {
-  font-size: 8rem;
+  font-size: clamp(3.2rem, 8vw, 8rem);
   font-weight: 300;
   color: #c7365f;
   margin-bottom: auto;
@@ -82,8 +87,8 @@ main {
   opacity: 0.8;
   border-radius: 9px;
   color: #fff;
-  width: 65%;
-  padding: 2rem;
+  width: min(65%, 24rem);
+  padding: clamp(0.8rem, 2vw, 2rem);
   text-align: center;
   transition: all 0.75s;
 }
@@ -108,7 +113,7 @@ main {
   background: none;
   border: none;
   font-family: inherit;
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, min(1.8rem, 1.8vh), 1.8rem);
   text-transform: uppercase;
   cursor: pointer;
   font-weight: 400;
@@ -118,25 +123,30 @@ main {
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
 
-  padding: 0.7rem 2.5rem;
+  padding: clamp(0.4rem, 1.2vh, 0.7rem) clamp(0.8rem, 2.5vw, 2.5rem);
   border-radius: 50rem;
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  max-width: calc(100% - 1rem);
 }
 
 .btn::first-letter {
-  font-size: 2.4rem;
+  font-size: clamp(1.2rem, 2.4vw, 2.4rem);
   display: inline-block;
   margin-right: 0.7rem;
 }
 
 .btn--new {
-  top: 4rem;
+  top: 6.7%;
 }
 .btn--roll {
-  top: 39.3rem;
+  top: 65.5%;
 }
 .btn--hold {
-  top: 46.1rem;
+  top: 76.8%;
+}
+.btn--instructions{
+  top: 88.2%;
 }
 
 .btn:active {
@@ -151,9 +161,10 @@ main {
 .dice {
   position: absolute;
   left: 50%;
-  top: 16.5rem;
+  top: 27.5%;
   transform: translateX(-50%);
-  height: 10rem;
+  height: min(10rem, 16vh);
+  max-width: 18%;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
 }
 
@@ -168,4 +179,75 @@ main {
 
 .hidden{
   display: none;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+/* -------------------------- */
+/* CLASSES TO MAKE MODAL WORK */
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(70rem, calc(100vw - 3rem));
+  max-height: calc(100vh - 3rem);
+  max-height: calc(100svh - 3rem);
+  overflow: auto;
+
+  background-color: white;
+  padding: clamp(2rem, 6vw, 6rem);
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+@media (max-width: 480px) {
+  .player {
+    padding: 1rem;
+  }
+
+  .name {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    letter-spacing: 0;
+    word-spacing: 0;
+  }
+
+  .current-label {
+    font-size: 1.3rem;
+  }
+
+  .current-score {
+    font-size: 2.8rem;
+  }
 }

@@ -10,6 +10,10 @@ const diceEl = document.querySelector('.dice')
 const btnRoll = document.querySelector('.btn--roll')
 const btnHold = document.querySelector('.btn--hold') 
 const btnNew = document.querySelector('.btn--new')
+const btnInstruct = document.querySelector('.btn--instructions')
+const modal = document.querySelector('.modal')
+const overlay = document.querySelector('.overlay')
+const closeModal = document.querySelector('.close-modal')
 
 // First step
 score0El.textContent = 0
@@ -59,7 +63,7 @@ btnHold.addEventListener('click', function(){
         // switchPlayer()
 
         // find a winner once the score is >= 100
-       if (scores[activePlayer] >= 20){
+       if (scores[activePlayer] >= 100){
            playing = false
            document.querySelector(`.player--${activePlayer}`).classList.add('player--winner')
            document.querySelector(`.player--${activePlayer}`).classList.remove('player--active')
@@ -85,4 +89,24 @@ btnNew.addEventListener('click', function(){
     player0.classList.add('player--active')
     player1.classList.remove('player--active')
     playing = true
+})
+
+const closeInstruction = function(){
+    modal.classList.add('hidden')
+    overlay.classList.add('hidden')
+}
+
+btnInstruct.addEventListener('click', function(){
+    modal.classList.remove('hidden')
+    overlay.classList.remove('hidden')
+})
+
+overlay.addEventListener('click', closeInstruction)
+
+closeModal.addEventListener('click', closeInstruction)
+
+document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape' && !modal.classList.contains('hidden')){
+        closeInstruction()
+    }
 })
