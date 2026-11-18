@@ -233,6 +233,10 @@ p {
 }
 
 @media (max-width: 480px) {
+  main {
+    height: min(36rem, calc(100svh - 4rem));
+  }
+
   .player {
     padding: 1rem;
   }
