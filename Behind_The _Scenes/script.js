@@ -13,3 +13,4 @@
 
 // A javascript engine is a computer program that executes javascript code. Every browser has its own engine, with the main being google v8 and node.
 // Every engine has a callstack and a heap, i.e. where the code is actually executed and where it is stored respectively.
+// continuation
