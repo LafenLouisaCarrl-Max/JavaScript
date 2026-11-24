@@ -13,4 +13,12 @@
 
 // A javascript engine is a computer program that executes javascript code. Every browser has its own engine, with the main being google v8 and node.
 // Every engine has a callstack and a heap, i.e. where the code is actually executed and where it is stored respectively.
-// continuation
+
+// Compilation: The code is converted to machine code all at once and is written into a binary file that can be executed (could be way after compilation) by the machine
+// Interpreter: source code is converted to machine code and executed line by line
+// Just In Time (JIT) Compilation: The entire code is converted to machine code all at once and executed immediately
+
+//.       (AST).                              <-  
+// Parsing -> Compilation -> Execution -> Optimization
+
+
