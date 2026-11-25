@@ -29,6 +29,9 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function(starter, mainCourse){
+    return [this.starterMenu[starter], this.mainMenu[mainCourse]]
+  },
 
   openingHours: {
     thu: {
@@ -45,3 +48,18 @@ const restaurant = {
     },
   },
 };
+
+
+// Destructuring Arrays
+const arr = [2, 4, 6]
+let [x, y, z] = arr // it assigns each element in the array to each letter respectively
+[x, y] = arr  // gets only the first two elements in the array 
+([x, , z] = arr); // skips the second element
+
+const [start, mainer] = restaurant.order(2, 0) // this destructures the 3rd and 1st elemets of the starterMenu and mainMenu respectively into start and mainer
+console.log(start, mainer)
+// Nested destructuring 
+const ar = [2, 4, [1, 5]]
+let [i, , [j, k]] = ar
+console.log(i, j, k)
+
