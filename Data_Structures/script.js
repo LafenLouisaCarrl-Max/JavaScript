@@ -62,5 +62,6 @@ console.log(start, mainer)
 const ar = [2, 4, [1, 5]]
 let [i, , [j, k]] = ar
 console.log(i, j, k)
-//
-// continuation
+
+
+// I will be continuing this later!!
